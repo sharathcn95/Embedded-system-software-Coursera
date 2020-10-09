@@ -10,14 +10,14 @@
 #*****************************************************************************
 
 # Add your Source files to this variable
-SOURCES = /home/sharath/Coursera/Sharath_Coursera/course1/src/main.c \
-	/home/sharath/Coursera/Sharath_Coursera/course1/src/course1.c \
-	/home/sharath/Coursera/Sharath_Coursera/course1/src/data.c \
-	/home/sharath/Coursera/Sharath_Coursera/course1/src/stats.c\
-	/home/sharath/Coursera/Sharath_Coursera/course1/src/memory.c\
+SOURCES = ./src/main.c \
+	./src/course1.c \
+	./src/data.c \
+	./src/stats.c\
+	./src/memory.c\
 
 # Add your include paths to this variable
-INCLUDES = -I//home/sharath/Coursera/Sharath_Coursera/course1/include/common \
-	-I/home/sharath/Coursera/Sharath_Coursera/course1/include/msp432 \
-	-I/home/sharath/Coursera/Sharath_Coursera/course1/include/CMSIS
+INCLUDES = -I./include/common \
+	-I./include/msp432 \
+	-I./include/CMSIS
 
