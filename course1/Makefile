@@ -35,8 +35,8 @@ CC = arm-none-eabi-gcc
 LD = arm-none-eabi-ld
 SIZE = arm-none-eabi-size
 DUMP = arm-none-eabi-objdump
-LINKER_FILE = /home/sharath/Coursera/m2/msp432p401r.lds
-LDFLAGS = -Wl,-Map=$(TARGET).map -T $(LINKER_FILE)
+LINKER_FILE =./msp432p401r.lds
+LDFLAGS = -Wl,-Map=$(TARGET).map -T$(LINKER_FILE)
 CFLAGS = -mcpu=$(CPU) -m$(ARCH) -march=armv7e-m -mfloat-abi=hard -mfpu=fpv4-sp-d16 --specs=$(SPECS)
 # etc
 else
@@ -44,6 +44,14 @@ CC = gcc
 SIZE = size
 DUMP = objdump
 # etc
+endif
+#Debug Overrides
+ifeq ($(VERBOSE), VERBOSE)
+debug = -DVERBOSE
+endif
+#Program Overrides
+ifeq ($(COURSE1), COURSE1)
+program = -DCOURSE1
 endif
 #Common Flags
 COFLAG = -Wall -g -O0 -std=c99
@@ -57,7 +65,7 @@ OBJS = $(SOURCES:.c=.o)
 course1 = $(PROGRAM)
 
 %.o: %.c
-	$(CC) -c $< $(CFLAGS) $(COFLAG) $(INCLUDES) -DVERBOSE -DCOURSE1 -D$(PLATFORM) -o $@ -lm
+	$(CC) -c $< $(CFLAGS) $(COFLAG) $(INCLUDES) $(debug) $(program) -D$(PLATFORM) -o $@ -lm
 
 .PHONY: build
 build: $(TARGET).out
@@ -71,16 +79,16 @@ clean:
 compile-all: $(OBJS)
 
 %.i : %.c
-	$(CC) -E $< $(INCLUDES) $(CFLAGS) $(COFLAG) -DVERBOSE -DCOURSE1 -D$(PLATFORM) -o $@ -lm
+	$(CC) -E $< $(INCLUDES) $(CFLAGS) $(COFLAG) $(debug) $(program) -D$(PLATFORM) -o $@ -lm
 
 %.asm : %.c
-	$(CC) -S $< $(INCLUDES) $(CFLAGS) $(COFLAG) -DVERBOSE -DCOURSE1 -D$(PLATFORM) -o $@ -lm
+	$(CC) -S $< $(INCLUDES) $(CFLAGS) $(COFLAG) $(debug) $(program) -D$(PLATFORM) -o $@ -lm
 
 $(TARGET).asm : $(TARGET).out
 	$(DUMP) -S -d $< > $@
 
 $(TARGET).out: $(OBJS)
-	$(CC) $(OBJS) $(INCLUDES) $(CFLAGS) $(COFLAG) $(LDFLAGS) -DVERBOSE -DCOURSE1 -Wall -o $@ -lm
+	$(CC) $(OBJS) $(INCLUDES) $(CFLAGS) $(COFLAG) $(LDFLAGS) $(debug) $(program) -Wall -o $@ -lm
 
 
 
