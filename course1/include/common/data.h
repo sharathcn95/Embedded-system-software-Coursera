@@ -1,9 +1,12 @@
 /**
- * @file memory.h
- * @brief Abstraction of memory read and write operations
+ * @file data.c
+ * @brief performs Integer to ACSII and vice vers
  *
- * This header file provides an abstraction of reading and
- * writing to memory via function calls. 
+ * This function find the ACSII value to given integer of any base.
+ * It can also find the Integer value of given base from the ACSII string
+ *
+ * @author Sharath Chandran
+ * @date Oct 9 2020
  *
  * @author Alex Fosdick
  * @date April 1 2017
