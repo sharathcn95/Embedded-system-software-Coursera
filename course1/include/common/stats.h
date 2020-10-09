@@ -9,13 +9,14 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * @file Stats.c
+ * @brief performs basic statistics on given data array
  *
- * <Add Extended Description Here>
+ * This function calulates Maximum, Minimum, Median, Mean and median
+ * this function also performs sort the array in desending order
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author Sharath Chandran
+ * @date Oct 9 2020
  *
  */
 #ifndef __STATS_H__
