@@ -12,11 +12,12 @@
  * @file memory.h
  * @brief Abstraction of memory read and write operations
  *
- * This header file provides an abstraction of reading and
- * writing to memory via function calls. 
+ * This implementation file provides an abstraction of reading,
+ * writing to memory, memory copy,move, reverse and reservevia function calls.
+ * There is also a globally allocated buffer array used for manipulation. 
  *
- * @author Alex Fosdick
- * @date April 1 2017
+ * @author sharath chandran
+ * @date OCT 9 2020
  *
  */
 #ifndef __MEMORY_H__
