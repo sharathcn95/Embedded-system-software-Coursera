@@ -9,37 +9,41 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * @file Stats.c
+ * @brief performs basic statistics on given data array
  *
- * <Add Extended Description Here>
+ * This function calulates Maximum, Minimum, Median, Mean and median
+ * this function also performs sort the array in desending order
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author Sharath Chandran
+ * @date Oct 9 2020
  *
  */
 
 
 
-#include <stdio.h>
 #include "stats.h"
+#include "platform.h"
 
 
 /* Add other Implementation File Code Here */
+//Print the Given array for debug
 void print_array(unsigned char *a, int count)
  {
+ 	//check fro the debug macro
  	if(DEBUG){
- 	printf("\ntest[%d] = \n{", count);
+ 	PRINTF("\ntest[%d] = \n{", count);
  	int i;  
 		for ( i = 0; i < count; i++)
 			{
-				printf("\t%d", a[i]);
+				PRINTF("\t%d", a[i]);
 				if(( ( i + 1) % 5) == 0)
-					printf("\n");
+					PRINTF("\n");
 	        }
-	printf("}\n");
+	PRINTF("\t}\n");
 	}
  }
+ //sort the array in decending order
 void sort_array(unsigned char *a, int count)
  {
     int i, j, temp;
@@ -61,6 +65,8 @@ void sort_array(unsigned char *a, int count)
             }
         }
  }
+ 
+ //find the median of the given array
 float find_median(unsigned char *a, int count)
  {
     int median=0;
@@ -77,6 +83,8 @@ float find_median(unsigned char *a, int count)
         }
     return median; 
  }
+ 
+ //calcuate the mean value
 int find_mean(unsigned char *a, int count)
  {
    int i,sum = 0;
@@ -88,6 +96,8 @@ int find_mean(unsigned char *a, int count)
 
    return (sum / count);
  }
+ 
+ //find the maximum
 int find_minimum(unsigned char *a, int count)
 {
   int min = a[0];
@@ -99,6 +109,8 @@ int find_minimum(unsigned char *a, int count)
         }
   return min;
 }
+
+//find the minimum
 int find_maximum(unsigned char *a, int count)
 {
   int max = 0;
@@ -110,15 +122,17 @@ int find_maximum(unsigned char *a, int count)
         }
   return max;
 }
+
+//print the result to the screen
 void print_statistics(unsigned char *a, int count)
 {
-    int max, min, median, mean;
+    int max = 0, min = 0, median = 0, mean = 0;
     max = find_maximum(a, count);
     min = find_minimum(a, count);
     median = find_median(a,count);
     mean = find_mean(a, count);
-    printf("\nmaximum = %d\n", max);
-    printf("\nminimum = %d\n", min);
-    printf("\nmean = %d\n", mean);
-    printf("\nmedian = %d\n", median);
+    PRINTF("\nmaximum = %d\n", max);
+    PRINTF("\nminimum = %d\n", min);
+    PRINTF("\nmean = %d\n", mean);
+    PRINTF("\nmedian = %d\n", median);
 }
